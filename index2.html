@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            width: 50px;
+            height: 50px;
+            background-color: plum;
+            margin: 0px;
+            transform: translateX(0);
+        }
+
+        .a {
+            font-size: 50px;
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        #time {
+            color: pink;
+            font-size: smaller;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a"></div>
+    <p class="a">打开了网页0秒</p>
+    <a href="index.html" id="time">跳转看时间</a>
+    <script>
+        const box = document.getElementById("a");
+        const timeDisplay = document.getElementsByClassName("a")[0];
+        let position = 0;
+        let seconds = 0;
+
+        function animate() {
+            const clientWidth = document.documentElement.clientWidth;
+            position = (position + 1) % (clientWidth - 50);
+            box.style.transform = `translateX(${position}px)`;
+            requestAnimationFrame(animate);
+        }
+        
+        requestAnimationFrame(animate);
+
+        const timer = setInterval(() => {
+            seconds++;
+            timeDisplay.textContent = `打开了网页${seconds}秒`;
+            
+            if (seconds >= 10) {
+                alert("既然这么无聊，还不如来看看时间");
+                window.location.href = "index.html";
+                clearInterval(timer);
+            }
+        }, 1000);
+
+    </script>
+</body>
+</html>
