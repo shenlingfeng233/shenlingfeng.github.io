@@ -1,0 +1,65 @@
+:root {
+    /* 明亮主题默认变量 */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --container-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* 暗色主题变量 */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --container-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* 响应系统级主题设置 */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --container-bg: rgba(0, 0, 0, 0.8);
+    }
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    background-image: url('https://source.unsplash.com/1920x1080/?nature'); /* 随机自然背景图 */
+    background-size: cover;
+    background-position: center;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+#time-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px 60px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    background: var(--container-bg);
+    backdrop-filter: blur(10px);
+}
+
+#time {
+    font-size: 5em;
+    letter-spacing: 4px;
+}
+
+#date {
+    font-size: 1.5em;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* 隐藏默认音频控件 */
+audio {
+    display: none;
+}
